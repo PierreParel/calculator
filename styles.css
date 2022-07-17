@@ -16,7 +16,7 @@
     grid-template-rows: minmax(100px, auto) repeat(5, 100px);
     border: 2px solid black;
     gap: 3px;
-    padding:2px;
+    padding:5px;
 }
 
 #display {
@@ -24,4 +24,7 @@
     grid-column: 1 / -1;
     justify-content: flex-end;
     align-items:flex-end;
+    border: 1px solid black;
+    font-size: 36px;
 }
+
