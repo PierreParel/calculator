@@ -20,13 +20,14 @@ buttons.forEach(button => {
     button.addEventListener('click', (e) => {
         if(button.classList.contains('number')){
             let num = e.target.value;
+
             if(pressedEquals){
                 pressedEquals = false;
                 displayValue = num;
             }else{
                 if(displayValue == 0 || displayValue == num1){
                     displayValue = num;
-                }else{
+                }else if (displayValue.length < 9){
                     displayValue+= num;
                 }
             }
@@ -38,6 +39,9 @@ buttons.forEach(button => {
                 console.log(op1);
                 num1 = displayValue;
             }else if(op1 != null){
+                if(num1 == "YOU CANNOT DIVIDE BY 0 BOZO"){
+                    resetCalc();
+                }
                 op2 = butt;
                 num2 = displayValue;
                 inputNumbers();
@@ -115,7 +119,8 @@ function operate(x,y){
     let ans = 0;
     x = Number(x);
     y = Number(y);
-    console.log(`\n\n OPERATOR: ${op1}`);
+
+    console.log(`\n\n OPERATOR: ${op1} \n NUMBER 1: ${num1} \n NUMBER 2: ${num2}`);
     switch(op1){
         case "+":
             ans = add(x,y);
@@ -128,7 +133,7 @@ function operate(x,y){
             break;
         case "/":
             if(y == 0){
-                displayValue = "YOU CANNOT DIVIDE BY 0 BOZO"
+                ans = "YOU CANNOT DIVIDE BY 0 BOZO"
             }
             else{
                 ans = divide(x,y);
