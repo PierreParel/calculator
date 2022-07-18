@@ -8,4 +8,4 @@ This basic calculator is made using html, css, and javascript.
 4. [] Change format of calculator to fill the window
 5. [DONE] Disable division by 0
 6. [] Improve design
-7. Add scientific notation for large numbers.
+7. [] Add scientific notation for large numbers.
