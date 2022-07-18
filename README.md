@@ -6,5 +6,6 @@ This basic calculator is made using html, css, and javascript.
 2. [] Implement decimal button and computation for decimals
 3. [] Add functionality to +/- button
 4. [] Change format of calculator to fill the window
-5. [] Disable division by 0
+5. [DONE] Disable division by 0
 6. [] Improve design
+7. Add scientific notation for large numbers.
