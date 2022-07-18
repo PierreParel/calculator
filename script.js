@@ -3,7 +3,8 @@ let num1 = null,
     num2 = null, 
     op1 = null,
     op2 = null,
-    displayValue = '0';
+    displayValue = '0',
+    pressedEquals = false;
     
 let operation;
 const buttons = document.querySelectorAll("button");
@@ -19,11 +20,17 @@ buttons.forEach(button => {
     button.addEventListener('click', (e) => {
         if(button.classList.contains('number')){
             let num = e.target.value;
-            if(displayValue == 0 || displayValue == num1){
+            if(pressedEquals){
+                pressedEquals = false;
                 displayValue = num;
             }else{
-                displayValue+= num;
+                if(displayValue == 0 || displayValue == num1){
+                    displayValue = num;
+                }else{
+                    displayValue+= num;
+                }
             }
+            
         }else if(button.classList.contains('operator')){
             let butt = e.target.value;
             if(op1 == null){
@@ -35,6 +42,17 @@ buttons.forEach(button => {
                 num2 = displayValue;
                 inputNumbers();
             }
+        }else if(button.classList.contains('equals')){
+            if(num1 != null){
+                num2 = displayValue;
+                displayValue = operate(num1,num2);
+                num1 = null;
+                op1 = null;
+                num2 = null;
+                op2 = null;
+                pressedEquals = true;
+            }
+
         }else if(button.classList.contains('clear')){
             resetCalc();
         }
@@ -57,7 +75,6 @@ function inputNumbers(){
         num2 = null;
     }
 }
-
 
 function inputDecimal(){
 }
