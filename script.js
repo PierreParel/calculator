@@ -59,6 +59,8 @@ buttons.forEach(button => {
 
         }else if(button.classList.contains('clear')){
             resetCalc();
+        }else if(button.classList.contains('negative')){
+            displayValue = String(displayValue * -1);
         }
         updateDisplay();
     });
