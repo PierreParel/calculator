@@ -1,8 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');
 
 * {
     margin:0;
     padding:0;
+}
+
+body{
+    background-color: black;
+}
+
+button {
+    border-radius: 50px;
+    border: none;
+    font-family: "Roboto", monospace;
+    font-weight: 300;
+    font-size:30px;
+    margin: 5px;
+    background-color: #313131;
+    color:white;
 }
 
 #calc {
@@ -16,9 +31,12 @@
     display:grid;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(100px, auto) repeat(5, 100px);
-    border: 2px solid black;
+    border: 1px solid white;
+    border-radius: 10px;
     gap: 3px;
-    padding:5px;
+    padding:10px;
+    padding-top: 100px;
+    padding-bottom: 10px;
 }
 
 #display {
@@ -30,5 +48,20 @@
     font-size: 72px;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
+    color: #F7F7F7;
+    padding-bottom: 10px;
 }
 
+.gray {
+    background-color: #9F9F9F;
+    color: black;
+}
+
+.operator{
+    background-color: #F59906;
+    color: white;
+}
+
+#zero {
+    grid-column: span 2;
+}
