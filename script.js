@@ -36,7 +36,7 @@ buttons.forEach(button => {
             let butt = e.target.value;
             if(op1 == null){
                 op1 = butt;
-                console.log(op1);
+                // console.log(op1);
                 num1 = displayValue;
             }else if(op1 != null){
                 if(num1 == "YOU CANNOT DIVIDE BY 0 BOZO"){
@@ -56,25 +56,30 @@ buttons.forEach(button => {
                 op2 = null;
                 pressedEquals = true;
             }
-
         }else if(button.classList.contains('clear')){
             resetCalc();
         }else if(button.classList.contains('negative')){
             displayValue = String(displayValue * -1);
+        }else if(button.classList.contains('decimal')){
+            let num = displayValue;
+            if(!num.includes('.')){
+                displayValue += "."
+            }
+        }else if(button.classList.contains('percent')){
+            inputPercent();
         }
         updateDisplay();
     });
 });
 
-
 function inputNumbers(){
-    console.log(`num1:${num1}\nnum2:${num2}\nop1:${op1}\nop2:${op2}`)
+    // console.log(`num1:${num1}\nnum2:${num2}\nop1:${op1}\nop2:${op2}`)
 
     if(num1 == null){
         num1 = displayValue;
     }else if(num1 != null){
         num1 = operate(num1,num2);
-        console.log(`num1: ${num1}`);
+        // console.log(`num1: ${num1}`);
         op1 = op2;
         op2 = null;
         displayValue = num1;
@@ -82,11 +87,8 @@ function inputNumbers(){
     }
 }
 
-function inputDecimal(){
-}
-
 function inputPercent(){
-    displayValue = displayValue/100;
+    displayValue = String(Number(displayValue)/100);
 }
 
 function resetCalc(){
@@ -95,10 +97,6 @@ function resetCalc(){
     op1 = null, 
     op2 = null, 
     displayValue = '0';
-}
-
-function changeSign(){
-
 }
 
 function add(x,y){
@@ -122,7 +120,7 @@ function operate(x,y){
     x = Number(x);
     y = Number(y);
 
-    console.log(`\n\n OPERATOR: ${op1} \n NUMBER 1: ${num1} \n NUMBER 2: ${num2}`);
+    // console.log(`\n\n OPERATOR: ${op1} \n NUMBER 1: ${num1} \n NUMBER 2: ${num2}`);
     switch(op1){
         case "+":
             ans = add(x,y);
@@ -143,5 +141,11 @@ function operate(x,y){
             
             break;
     }
+    if(String(ans).length>9){
+        return Number.parseFloat(ans).toExponential(2);
+    }else if(String(ans).includes(".")){
+        return ans.toFixed(2);
+    }
+
     return ans;
 }
